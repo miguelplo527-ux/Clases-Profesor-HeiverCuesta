@@ -1,0 +1,8 @@
+import { useState } from 'react';
+const roles = ['Aprendiz','Instructor'];
+export default function Register({ alRegistrar, irLogin }) {
+  const [form,setForm]=useState({nombre:'',correo:'',password:'',rol:'Aprendiz'}); const [error,setError]=useState(''); const [mensaje,setMensaje]=useState(''); const [ocupado,setOcupado]=useState(false);
+  const cambiar=e=>setForm({...form,[e.target.name]:e.target.value});
+  const enviar=async e=>{e.preventDefault();setError('');setMensaje('');setOcupado(true);try{const r=await alRegistrar(form);setMensaje(r?.session?'Cuenta creada. Ya puedes ingresar.':'Cuenta creada. Si Supabase solicita confirmación, revisa tu correo y luego inicia sesión.');}catch(err){setError(err.message||'No se pudo registrar.');}finally{setOcupado(false);}};
+  return <section className="auth-card"><h2>Crear cuenta</h2><form onSubmit={enviar}><label>Nombre completo<input name="nombre" required value={form.nombre} onChange={cambiar}/></label><label>Correo<input name="correo" type="email" required value={form.correo} onChange={cambiar}/></label><label>Contraseña<input name="password" type="password" minLength="6" required value={form.password} onChange={cambiar}/></label><label>Rol<select name="rol" value={form.rol} onChange={cambiar}>{roles.map(r=><option key={r}>{r}</option>)}</select></label>{error&&<p className="error">{error}</p>}{mensaje&&<p className="success">{mensaje}</p>}<button disabled={ocupado}>{ocupado?'Registrando...':'Registrarme'}</button></form><small>Los roles Jefe y Experto deben ser asignados por el administrador en Supabase.</small><p>¿Ya tienes cuenta? <button className="link" onClick={irLogin}>Inicia sesión</button></p></section>;
+}

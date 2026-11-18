@@ -1,0 +1,29 @@
+*{box-sizing:border-box}body{margin:0;font-family:Arial,sans-serif;background:#f3f5f9;color:#202b3c}button,input,select,textarea{font:inherit}button{border:0;border-radius:7px;background:#183b67;color:#fff;padding:11px 17px;cursor:pointer;font-weight:600}button:disabled{opacity:.6;cursor:wait}button:hover:not(:disabled){background:#24558f}.app{min-height:100vh}.topbar{background:#183b67;color:white;padding:20px max(5%,calc((100% - 1150px)/2));display:flex;align-items:center;justify-content:space-between;gap:20px}.topbar h1,.brand h1{margin:0;font-size:25px}.topbar p{margin:7px 0 0;color:#d9e5f3}.secondary{background:#fff;color:#183b67}.content{max-width:1150px;margin:28px auto;padding:0 20px;display:grid;gap:22px}.panel,.auth-card{background:white;padding:24px;border-radius:12px;box-shadow:0 3px 18px #172b4d12}.panel h2,.auth-card h2{margin:0 0 18px;font-size:20px}.auth-page{min-height:100vh;display:flex;flex-direction:column;align-items:center;justify-content:center;padding:24px;gap:25px}.brand{text-align:center}.brand h1{color:#183b67}.brand p{color:#66758b}.auth-card{width:min(100%,420px)}form{display:grid;gap:14px}label{display:grid;gap:7px;font-size:14px;font-weight:600;color:#34445a}input,select,textarea{width:100%;padding:11px;border:1px solid #ccd4df;border-radius:7px;background:white;color:#202b3c}textarea{min-height:100px;resize:vertical}.auth-card form button,.ticket-form button{margin-top:4px}.link{padding:0;background:none;color:#24558f;text-decoration:underline}.link:hover{background:none}.error{color:#b42318;background:#fff0ef;padding:10px;border-radius:6px;font-size:13px}.success{color:#167044;background:#eaf8f0;padding:10px;border-radius:6px;font-size:13px}.ticket-form{max-width:650px}.ticket-form small{color:#8a4b10}.section-title{display:flex;justify-content:space-between;align-items:center;gap:15px}.section-title h2{margin-bottom:0}.section-title select{max-width:190px}.ticket-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(270px,1fr));gap:15px;margin-top:20px}.ticket{border:1px solid #dce2ea;border-radius:9px;padding:17px;background:#fff}.ticket p{font-size:14px;line-height:1.5;margin:10px 0}.ticket-top{display:flex;justify-content:space-between;gap:10px;align-items:center}.status{background:#e8eff8;color:#183b67;padding:5px 9px;border-radius:20px;font-size:12px}.ticket small{color:#69788d}.ticket label{margin-top:14px}.loading{padding:80px;text-align:center}@media(max-width:600px){.topbar{align-items:flex-start;padding:18px;flex-direction:column}.content{padding:0 12px;margin:15px auto}.panel,.auth-card{padding:18px}.section-title{align-items:flex-start;flex-direction:column}.section-title select{max-width:none}}
+
+/* ---- Tarjetas contador (boceto: Nuevos / Pendientes / Finalizados) ---- */
+.contadores{display:flex;flex-wrap:wrap;justify-content:center;gap:clamp(18px,5vw,64px);margin-bottom:30px}
+.contador{display:flex;flex-direction:column;align-items:center;gap:14px;padding:0;background:none;color:#111;border-radius:0;font-weight:400}
+.contador:hover:not(:disabled){background:none}
+.contador-caja{display:grid;place-items:center;width:clamp(110px,22vw,190px);aspect-ratio:1/1.12;border:4px solid #111;border-radius:30px;background:#fff;font-size:clamp(56px,11vw,104px);line-height:1;transition:background .15s,color .15s,transform .15s}
+.contador:hover .contador-caja{transform:translateY(-3px)}
+.contador.activo .contador-caja{background:#111;color:#fff}
+.contador-etiqueta{font-size:18px}
+.contador:focus-visible{outline:3px solid #24558f;outline-offset:6px;border-radius:12px}
+@media(prefers-reduced-motion:reduce){.contador-caja{transition:none}.contador:hover .contador-caja{transform:none}}
+
+/* ---- Ajustes: 3 tarjetas en una fila en pantallas pequeñas ---- */
+.contadores{gap:clamp(12px,4vw,64px)}
+.contador-caja{width:clamp(88px,24vw,190px);font-size:clamp(44px,10vw,104px)}
+.contador-etiqueta{font-size:clamp(14px,3.6vw,18px)}
+.ticket-accion{margin-top:16px;padding-top:14px;border-top:1px dashed #ccd4df}
+.status-nuevos{background:#fff3d6;color:#7a4a00}
+.status-pendientes{background:#e8eff8;color:#183b67}
+.status-finalizados{background:#e3f6ea;color:#167044}
+
+/* ---- Pestañas de módulos ---- */
+.tabs{display:flex;flex-wrap:wrap;gap:8px;border-bottom:2px solid #d5dce6}
+.tabs .tab{background:none;color:#4a5a70;border-radius:8px 8px 0 0;padding:12px 18px;margin-bottom:-2px;border-bottom:3px solid transparent;display:inline-flex;align-items:center;gap:8px}
+.tabs .tab:hover:not(:disabled){background:#e8eff8;color:#183b67}
+.tabs .tab.activa{color:#183b67;border-bottom-color:#183b67;background:#fff}
+.insignia{background:#c0392b;color:#fff;border-radius:20px;min-width:22px;padding:2px 7px;font-size:12px;text-align:center}
+.ayuda{color:#5a6a80;font-size:14px;margin:0 0 18px;line-height:1.5}
